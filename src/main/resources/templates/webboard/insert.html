@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout1}">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert</title>
+
+</head>
+<body>
+	<div class="panel panel-default" layout:fragment="content">
+		<form th:action="@{insert.do}" method="post">
+			<div class="mb-3 row">
+				<label for="title" class="col-sm-2 col-form-label">제목</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="title">
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<label for="writer" class="col-sm-2 col-form-label">작성자</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="writer" >
+				</div>
+			</div>
+			<div class="mb-3 row">
+				<label for="content" class="col-sm-2 col-form-label">내용</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="content">
+				</div>
+			</div>			
+			<div class="mb-3 row">
+				<input type="submit" class="save-button" value="저장하기">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="panel panel-default" layout:fragment="content">
+		<div class="table12">
+			<table>
+				<tr>
+					<th>부서번호</th>
+					<th>부서명</th>
+					<th>부서위치번호</th>
+					<th>매니저번호</th>
+				</tr>
+				<tr th:each="dept:${dlist}">
+					<td th:text=${dept.departmentId}></td>
+					<td th:text=${dept.departmentName}></td>
+					<td th:text=${dept.locationId}></td>
+					<td th:text=${dept.managerId}></td>
+				</tr>
+			</table>
+			</div>
+			<hr>
+			<div class="table12">
+			<table>
+				<tr>
+					<th>직원번호</th>
+					<th>직원명</th>
+					<th>연봉</th>
+				</tr>
+				<tr th:each="emp:${elist}">
+					<td th:text=${emp.employeeId}></td>
+					<td th:text=${emp.firstName}></td>
+					<td th:text=${emp.salary}></td>
+				</tr>
+			</table>
+			</div>
+		</div>
+	
+</body>
+</html>

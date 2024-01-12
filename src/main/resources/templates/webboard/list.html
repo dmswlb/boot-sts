@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/layout1}">
+<head>
+<meta charset="UTF-8">
+<title>List</title>
+
+</head>
+<body>
+	<div class="panel panel-default" layout:fragment="content">
+	<p>[[${message}]]</p>
+		<table>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>내용</th>
+				<th>작성자</th>
+				<th>등록일</th>
+				<th>수정일</th>
+				<th>삭제</th>
+			</tr>
+			<tr th:each="board:${blist}">
+				<td><a th:href="@{detail.do(bno=${board.bno})}">[[${board.bno}]]</a>
+					<span class="badge bg-danger">[[${#lists.size(board.replies)}]]</span>
+					<span class="badge bg-primary">[[${board.replies.size()}]]</span></td>
+				<td>[[${board.title}]]</td>
+				<td>[[${board.content}]]</td>
+				<td>[[${board.writer}]]</td>
+				<td>[[${board.regdate}]]</td>
+				<td>[[${board.updatedate}]]</td>
+				<td><button th:onclick="call([[${board.bno}]])">삭제</button></td>
+			</tr>
+		</table>
+	</div>
+	<!-- content 끝 -->
+	<th:block layout:fragment="script1">
+		<script th:inline="javascript">
+		var msg = '[[${message}]]';
+		if(msg != null) alert(msg);
+			function call(bno) {
+				console.log(bno);
+				location.href="delete.do?bno=" + bno;
+			}
+		</script>
+	</th:block>
+</body>
+</html>

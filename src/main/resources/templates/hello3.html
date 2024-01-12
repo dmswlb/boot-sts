@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p th:text="|1.파라미터: ${myname}|" />
+	<p th:text="|2.세션아이디: ${myname2}|" />
+	<p th:text="|3.날짜: ${now}|" />
+	<p th:text="|4.날짜format: ${#dates.format(now, 'yyyy-MM-dd hh:mm:ss')}|" />
+	<p th:text="|5.숫자: ${price}|" />
+	<p th:text="|6.숫자(정수): ${#numbers.formatInteger(price, 3, 'COMMA')}|"/>
+	<p th:text="|7.숫자(정수, 소수): ${#numbers.formatInteger(price, 20, 3, 'POINT')}|"/>
+	<p th:text="|8.문자: ${title}|"/>
+	<p th:utext="|9.문자: ${#strings.replace(title,'s', '<b>S</b>')}|"/>
+	<ul>
+		<li th:each="item:${#strings.listsplit(title, ' ')}">[[${item}]]</li>
+	</ul>
+	<ul>
+		<li th:each="item:${options}">[[${item}]]</li>
+	</ul>
+	
+	<hr>
+	<h1>path 연습하기</h1>
+	<ul>
+		<li><a href="http://localhost:7777/freeboard/list" >freeboard가기1</a></li>
+		<li><a th:href="@{http://localhost:7777/freeboard/list}" >freeboard가기2</a></li>
+		<li><a th:href="@{freeboard/list}" >freeboard가기3(상대)</a></li>
+		<li><a th:href="@{/freeboard/list}" >freeboard가기4(절대)</a></li>
+		<li><a th:href="@{/freeboard/list(myname=jin)}" >freeboard가기4(param)</a></li>
+		<li><a th:href="@{~/freeboard/list}" >freeboard가기5(contestpath가 다른경우)</a></li>
+	</ul>
+	<script th:inline="javascript">
+	/*자바스크립트 주석*/
+	//자바스크립트 주석
+		var arr = /*[[${options}]]*/[];
+		var arr1 = eval('[[${options}]]');
+		var str = "a=10;b=20;c=a+b;console.log(c)";
+		console.log(arr);
+		console.log(arr1);
+		eval(str);
+	</script>
+</body>
+</html>
