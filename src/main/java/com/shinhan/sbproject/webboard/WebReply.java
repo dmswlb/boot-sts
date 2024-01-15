@@ -40,7 +40,7 @@ public class WebReply {
 	
 	//@JsonIgnore
 	//@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@ManyToOne(fetch = FetchType.LAZY) //lazy로 변경해도 OneToMany에서 Lazy가 그대로 수행~
+	@ManyToOne(fetch = FetchType.EAGER) //lazy로 변경해도 OneToMany에서 Lazy가 그대로 수행~
 	//@JoinColumn(name="board_bno")
 	WebBoard board;
 	//@ManyToOne, @OneToOne과 같이 @XXXToOne 어노테이션들은 기본이 즉시 로딩(EAGER) 이다.

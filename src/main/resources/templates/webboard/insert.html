@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{/layout/layout1}">
+	layout:decorate="~{layout/layout1}">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<div class="panel panel-default" layout:fragment="content">
+	<div class="panel panel-default insert" layout:fragment="content">
 		<form th:action="@{insert.do}" method="post">
 			<div class="mb-3 row">
 				<label for="title" class="col-sm-2 col-form-label">제목</label>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link
+<!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script
@@ -13,6 +13,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ -->	
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- layout을 상속받은 모든 자식에게 적용된다 -->
 <style>
 body {
 	background-color: rgb(230, 230, 250);
@@ -20,7 +26,8 @@ body {
 h1 {
 	text-align: center;
 	color: rgb(130, 120, 150);
-	padding: 10px;
+	padding: 30px 10px;
+	border-bottom: 1px solid rgb(130, 120, 150);
 }
 table {
 	width: 1500px;
@@ -50,17 +57,15 @@ table, th, tr, td, hd {
 	border-collapse: collapse;
 	text-align: center;
 }
-a{
+.bno {
 	text-decoration: none;
 	color: black;
 }
-a:hover {
+.bno:hover {
 	color: red;
 }
-
-.header {
-	text-align: center;
-	border-bottom: 1px solid rgb(130, 120, 150);
+.panel {
+	padding: 20px 0px;
 }
 
 .table12 {
@@ -68,11 +73,11 @@ a:hover {
 	justify-content: center;
 }
 .save-button {
-	width: 600px;
+	width: 1000px;
 	padding: 15px 0px;
 	background-color: rgb(130, 120, 150);
 	color: white;
-	margin: auto;
+	margin: 15px 5px;
 	border: none;
 	border-radius: 10px;
 }
@@ -81,12 +86,19 @@ a:hover {
 	color: rgb(30, 20, 50);
 	
 }
-.panel {
+
+.panel.insert, .panel.detail {
 	width: 1200px;
 	margin: auto;
 }
 .form-control{
-	width: 1000px;
+	width: 800px;
+    margin: 5px;
+}
+
+.row {
+	margin: auto;
+    width: 1100px;
 }
 
 .footer {
@@ -101,52 +113,15 @@ a:hover {
 	<!-- 하위 HTML에서 CSS 재정의할 예정 -->
 	<th:block layout:fragment="style1"></th:block>
 	<!-- fragment 삽입하기 -->
-	<header th:replace="fragments/header.html :: header2"></header>
+	<div th:replace="~{fragments/header.html :: header2}"></div>
 	<!-- 하위 HTML에서 content 재정의할 예정 -->
 	<div class="panel panel-default" layout:fragment="content">!!!!!!</div>
-	<footer th:replace="fragments/footer.html :: footer2"></footer>
+	<div th:replace="~{fragments/footer.html :: footer2}"></div>
 	<!-- 하위 HTML에서 javascript 재정의할 예정   th:block 은 없어지는 태그이다 -->
-	<th:block layout:fragment="script1"></th:block>
+	<th:block layout:fragment="script1">
 	<script>
 		console.log("layout에 있는");
 	</script>
+	</th:block>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<style>
-  p { color:red;}
-</style>
-<script>
-  alert("부모에서 작성된 JavaScript");
-</script>
-<th:block layout:fragment="style1"></th:block>
-</head>
-<body>
-하위 HTML에서 CSS 재정의할 예정
-<th:block layout:fragment="style1"></th:block>
-
-fragment 삽입하기
-<header th:replace="~{fragments/header.html :: header2}"></header>
-
-하위 HTML에서 content 재정의할 예정
-<div class="panel panel-default" layout:fragment="content">!!!!!!</div>
-
-<footer th:replace="~{fragments/footer.html :: footer2}"></footer>
-
-하위 HTML에서 javascript 재정의할 예정   th:block 은 없어지는 태그이다
-<th:block layout:fragment="script1">
-</th:block>
-</body>
-</html>  -->
