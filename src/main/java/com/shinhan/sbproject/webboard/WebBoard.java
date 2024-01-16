@@ -3,7 +3,6 @@ package com.shinhan.sbproject.webboard;
 import java.sql.Timestamp;
 import java.util.List;
 
-import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 

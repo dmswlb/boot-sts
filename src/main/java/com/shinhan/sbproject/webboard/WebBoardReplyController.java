@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/reply")
+@Tag(name="댓글", description="여기에서는 WebBoard CRUD 가능")
 public class WebBoardReplyController {
 	
 	@Autowired

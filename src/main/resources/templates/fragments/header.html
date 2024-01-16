@@ -6,7 +6,8 @@
 </head>
 <body>
 	<div th:fragment="header2">
-		<h1>Header조각2입니다</h1>
+		<h1>Header 조각2입니다</h1>
+		<p th:if="|${user != null}" th:text="${user.mname}+'님 환영합니다.'"></p>
 	</div>
 	<div th:fragment="header3">
 		<h1>Header조각3입니다</h1>

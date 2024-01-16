@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout1}">
+<head>
+<title>회원가입</title>
+ 
+</head>
+<body>
+	<div class="panel panel-default" layout:fragment="content">
+		<div class="panel-body">
+		
+			<h2>회원가입</h2>
+			<form method="post" action="joinProc" enctype="application/x-www-form-urlencoded">
+				<p><label for="mid">mid</label> 
+				   <input type="text" 	id="mid" name="mid" value="dmswl" /></p>
+				<p><label for="mname">mname</label> 
+				   <input type="text"  id="mname" name="mname" value="ej" />
+				</p>	
+				<p><label for="mpassword">mpassword</label> 
+					<input type="password"  id="mpassword" name="mpassword" value="1234" />
+				</p>					
+				 <p>				
+					<input type="radio"	name="mrole"  value="ADMIN" />ADMIN
+					<input type="radio"	name="mrole"  value="MANAGER" />MANAGER
+					<input type="radio"	name="mrole"  value="USER" checked="checked" />USER
+				</p>	
+				
+				<hr>
+				<h2>이런방법도있음</h2>
+				<p th:each="aa:${T(com.shinhan.sbproject.vo.MemberRole).values()}">
+				  <input type="radio"	name="mrole2"  th:value="${aa}" checked="checked"><span th:text="${aa}"></span>
+				</p>
+				
+				  <input type="text" 
+				 th:name="${_csrf.parameterName}" 
+				 th:value="${_csrf.token}"/>    
+			 <!--/*-->	 <!--*/-->
+				<button type="submit" class="btn">가입</button>
+			</form>
+			
+		</div>
+	</div>
+<
+</html>
